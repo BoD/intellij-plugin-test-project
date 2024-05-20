@@ -1,0 +1,45 @@
+query Resume {
+  meta {
+    lastModified
+  }
+  resume(language: EN) {
+    education {
+      degree
+      institution {
+        name
+        location
+        website
+      }
+      moreInfo
+      periodOrYear {
+        __typename
+        ...on Period {
+          start {
+            date
+          }
+          end {
+            date
+          }
+        }
+        ... on Year {
+          year
+        }
+      }
+    }
+    skills {
+      name
+      ... on SkillCategory {
+        items {
+          description
+        }
+      }
+    }
+    experience {
+      ...ExperienceFields
+    }
+  }
+}
+
+fragment ExperienceFields on Experience {
+  environment
+}
