@@ -1,0 +1,1 @@
+extend type dog @typePolicy(keyFields: "id")
